@@ -79,8 +79,13 @@ public class JsonUtils {
      * @param str the base 64 encoded bytes.
      * @return the Byte array or empty byte array.
      */
-    public static byte[] stringToBytes(String str) {
-        if (str == null || str.length() == 0) { return new byte[0]; }
+    public static byte[] stringToBytes(@Nullable String str) {
+        if (str == null) {
+            return null;
+        }
+        if (str.length() == 0) {
+            return new byte[0];
+        }
         return Base64.decode(str, Base64.DEFAULT);
     }
 }
